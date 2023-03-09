@@ -9,6 +9,7 @@ const weatherDescription = document.querySelector('.description');
 const windSpeed = document.querySelector('.wind-speed');
 const errorMessage = document.querySelector('.message');
 const unitsButton = document.querySelector('.units');
+const humidity = document.querySelector('.humidity');
 // TODO: add farenheit and celsius conversion. and add symbols to temperature. add pictures for different weathers
 let farenheitUnit = true;
 unitsButton.textContent = 'Display C';
@@ -19,6 +20,7 @@ async function loadDefault() {
         temp.textContent = "Temperature: " + Math.ceil(defaultCityData.main.temp)
         feelsLike.textContent = "Feels Like: " + Math.ceil(defaultCityData.main.feels_like);
         weatherDescription.textContent = "Description: " + defaultCityData.weather[0].description;
+        humidity.textContent = "Humidity: " + defaultCityData.main.humidity + " %";
         windSpeed.textContent = "Wind speed: " + Math.ceil(defaultCityData.wind.speed) + " mph";
     
 }
@@ -53,6 +55,7 @@ async function switchUnit() {
         feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like);
         weatherDescription.textContent = "Description: " + fetchedData.weather[0].description;
         windSpeed.textContent = "Wind speed: " + Math.ceil(fetchedData.wind.speed) + " mph";
+        humidity.textContent = "Humidity: " + fetchedData.main.humidity + " %";
         errorMessage.textContent = '';
         console.log(fetchedData)
     } else {
@@ -61,6 +64,7 @@ async function switchUnit() {
         temp.textContent = "Temperature: " + Math.ceil(fetchedData.main.temp)
         feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like);
         weatherDescription.textContent = "Description: " + fetchedData.weather[0].description;
+        humidity.textContent = "Humidity: " + fetchedData.main.humidity + " %";
         windSpeed.textContent = "Wind speed: " + Math.ceil(fetchedData.wind.speed) + " kph";
         errorMessage.textContent = '';
         console.log(fetchedData)
