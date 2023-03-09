@@ -10,7 +10,8 @@ const windSpeed = document.querySelector('.wind-speed');
 const errorMessage = document.querySelector('.message');
 const unitsButton = document.querySelector('.units');
 const humidity = document.querySelector('.humidity');
-// TODO: add farenheit and celsius conversion. and add symbols to temperature. add pictures for different weathers
+const weatherImage = document.querySelector('.weather-image');
+
 let farenheitUnit = true;
 unitsButton.textContent = 'Display C';
 async function loadDefault() {
@@ -22,7 +23,7 @@ async function loadDefault() {
         weatherDescription.textContent = "Description: " + defaultCityData.weather[0].description;
         humidity.textContent = "Humidity: " + defaultCityData.main.humidity + " %";
         windSpeed.textContent = "Wind speed: " + Math.ceil(defaultCityData.wind.speed) + " mph";
-    
+    chooseIcon();
 }
 unitsButton.addEventListener('click', switchUnit);
 
@@ -69,6 +70,8 @@ async function switchUnit() {
         errorMessage.textContent = '';
         console.log(fetchedData)
     }
+    chooseIcon();
+    
     
     } catch(e) {
         cityName.textContent = 'City Unavailable';
@@ -92,3 +95,23 @@ loadDefault();
     const unit = 'imperial';
     displayInfo(unit);
  });
+
+
+ function chooseIcon() {
+    if(weatherDescription.textContent.includes('cloud')) {
+        weatherImage.src = 'icons/few-clouds.png';
+
+    } else if(weatherDescription.textContent.includes('clear'))  {
+        weatherImage.src = 'icons/clearsky.png';
+
+    } else if(weatherDescription.textContent.includes('rain')) {
+        weatherImage.src = 'icons/raining.png';
+
+    } else if (weatherDescription.textContent.includes('mist') || weatherDescription.textContent.includes('fog')) {
+        weatherImage.src = 'icons/mist.png';
+
+    } else if (weatherDescription.textContent.includes('snow')) {
+        weatherImage.src = 'icons/snow.png'
+    }
+
+ }
