@@ -18,9 +18,9 @@ async function loadDefault() {
     inputField.value = 'Atlanta';
     const defaultCityData = await getData('Atlanta', 'imperial')
         cityName.textContent = defaultCityData.name;
-        temp.textContent = "Temperature: " + Math.ceil(defaultCityData.main.temp)
+        temp.textContent = Math.ceil(defaultCityData.main.temp) + '°F';
         feelsLike.textContent = "Feels Like: " + Math.ceil(defaultCityData.main.feels_like);
-        weatherDescription.textContent = "Description: " + defaultCityData.weather[0].description;
+        weatherDescription.textContent = defaultCityData.weather[0].description;
         humidity.textContent = "Humidity: " + defaultCityData.main.humidity + " %";
         windSpeed.textContent = "Wind speed: " + Math.ceil(defaultCityData.wind.speed) + " mph";
     chooseIcon();
@@ -52,9 +52,9 @@ async function switchUnit() {
        
         const fetchedData = await getData(city, unit)
         cityName.textContent = fetchedData.name;
-        temp.textContent = "Temperature: " + Math.ceil(fetchedData.main.temp)
-        feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like);
-        weatherDescription.textContent = "Description: " + fetchedData.weather[0].description;
+        temp.textContent = Math.ceil(fetchedData.main.temp) + '°F';
+        feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like) + '°F';
+        weatherDescription.textContent = fetchedData.weather[0].description;
         windSpeed.textContent = "Wind speed: " + Math.ceil(fetchedData.wind.speed) + " mph";
         humidity.textContent = "Humidity: " + fetchedData.main.humidity + " %";
         errorMessage.textContent = '';
@@ -62,9 +62,9 @@ async function switchUnit() {
     } else {
         const fetchedData = await getData(city, unit);
         cityName.textContent = fetchedData.name;
-        temp.textContent = "Temperature: " + Math.ceil(fetchedData.main.temp)
-        feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like);
-        weatherDescription.textContent = "Description: " + fetchedData.weather[0].description;
+        temp.textContent = Math.ceil(fetchedData.main.temp) + '°C';
+        feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like) + '°C';
+        weatherDescription.textContent = fetchedData.weather[0].description + '°C';
         humidity.textContent = "Humidity: " + fetchedData.main.humidity + " %";
         windSpeed.textContent = "Wind speed: " + Math.ceil(fetchedData.wind.speed) + " kph";
         errorMessage.textContent = '';

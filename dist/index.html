@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script>
     <title>Weather</title>
 </head>
 <body>
-    <h1>Weather</h1>
     <input placeholder="Enter a city" required>
     <div class="message"></div>
     <button>Search</button>
 <div class="weatherbody-container"> 
+<div class="main-info">
     <div class="city-name-container">
         <h1 class="city-name"></h1>
 
@@ -20,22 +21,40 @@
     <div class="temperature-container">
         <h1 class="temp"></h1>
     </div>
-    <div class="feels-like-container">
-        <h1 class="feels"></h1>
-    </div>
-
-   <div class="description-container">
+    <div class="description-container">
         <h1 class="description"></h1>
-        <img alt="weather" class="weather-image">
+       
    </div>
-   <div class="wind-speed-container">
-        <h1 class="wind-speed"></h1>
-        <img src="icons/wind.svg" alt="wind" class="wind-speed-image">
+   <div class="weatherimage">
+    <img alt="weather" class="weather-image">
    </div>
-    <div class="humidity-container">
-        <h1 class="humidity"></h1>
-        <img src="icons/humidity.png" alt="humidity" class="humidity-image">
+   
+</div>
+    <div class="other-info">
+        <div class="feels-like-container">
+            <h1 class="feels"></h1>
+            <div class="image">
+                <img src="icons/thermometer.png" alt="thermometer" class="feels-like-image">
+            </div>
+         
+        </div>
+    
+       <div class="wind-speed-container">
+            <h1 class="wind-speed"></h1>
+            <div class="image">
+                <img src="icons/wind.svg" alt="wind" class="wind-speed-image">
+            </div>
+          
+       </div>
+        <div class="humidity-container">
+            <h1 class="humidity"></h1>
+            <div class="image">
+                <img src="icons/humidity.png" alt="humidity" class="humidity-image">
+            </div>
+    
+        </div>
     </div>
+    
     <button class="units"></button>
 </div>
 

@@ -1,0 +1,42 @@
+* {
+    margin: 5px;
+}
+
+
+
+img {
+    height: 20vh;
+    width: 20vh;
+}
+
+
+.main-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+   
+}
+
+.city-name-container, .temperature-container, .description-container, .weatherimage {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.other-info {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.feels-like-container, .wind-speed-container, .humidity-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+}
