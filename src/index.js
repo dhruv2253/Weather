@@ -64,7 +64,7 @@ async function switchUnit() {
         cityName.textContent = fetchedData.name;
         temp.textContent = Math.ceil(fetchedData.main.temp) + '°C';
         feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like) + '°C';
-        weatherDescription.textContent = fetchedData.weather[0].description + '°C';
+        weatherDescription.textContent = fetchedData.weather[0].description;
         humidity.textContent = "Humidity: " + fetchedData.main.humidity + " %";
         windSpeed.textContent = "Wind speed: " + Math.ceil(fetchedData.wind.speed) + " kph";
         errorMessage.textContent = '';
