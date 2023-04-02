@@ -75,20 +75,12 @@ async function switchUnit() {
     
     } catch(e) {
         cityName.textContent = 'City Unavailable';
-        errorMessage.textContent = "Enter a valid city";
+        
         
     }
-
-
-
-    
+ 
  }
-
- async function switchDisplay() {
-    
- }
-
-
+ 
 loadDefault();
  searchButton.addEventListener('click', () =>{
     farenheitUnit = true;
