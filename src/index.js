@@ -76,7 +76,6 @@ async function switchUnit() {
     } catch(e) {
         cityName.textContent = 'City Unavailable';
         
-        
     }
  
  }
