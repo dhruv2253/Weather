@@ -1,5 +1,6 @@
 import {getData} from "./getData";
 
+// query selections
 const inputField = document.querySelector('input');
 const searchButton = document.querySelector('button');
 const cityName = document.querySelector('.city-name');
@@ -12,8 +13,12 @@ const unitsButton = document.querySelector('.units');
 const humidity = document.querySelector('.humidity');
 const weatherImage = document.querySelector('.weather-image');
 
+
+// set unit button and default unit
 let farenheitUnit = true;
 unitsButton.textContent = 'Display C';
+
+// load the default city
 async function loadDefault() {
     inputField.value = 'Atlanta';
     const defaultCityData = await getData('Atlanta', 'imperial')
@@ -25,15 +30,19 @@ async function loadDefault() {
         windSpeed.textContent = "Wind speed: " + Math.ceil(defaultCityData.wind.speed) + " mph";
     chooseIcon();
 }
-unitsButton.addEventListener('click', switchUnit);
 
+
+
+// refresh the page and use a different unit
 async function switchUnit() {
+    // if button is on farenheit, switch to celsius
     if (farenheitUnit) {
         let unit = 'metric'
         displayInfo(unit);
         farenheitUnit = false;
         unitsButton.textContent = 'display F'
     }
+    // vice versa
     else {
         let unit = 'imperial';
         displayInfo(unit);
@@ -42,31 +51,43 @@ async function switchUnit() {
     }
 }
 
+// Display info of given city
  async function displayInfo(unit) {
     
     unitsButton.textContent = 'Display C'
     try {
     const city = inputField.value;
     console.log(farenheitUnit);
+    // If button is on farenheiht, load in fareheit 
     if (farenheitUnit){ 
-       
+       // display info
         const fetchedData = await getData(city, unit)
         cityName.textContent = fetchedData.name;
+        
         temp.textContent = Math.ceil(fetchedData.main.temp) + '°F';
         feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like) + '°F';
+
         weatherDescription.textContent = fetchedData.weather[0].description;
         windSpeed.textContent = "Wind speed: " + Math.ceil(fetchedData.wind.speed) + " mph";
+
         humidity.textContent = "Humidity: " + fetchedData.main.humidity + " %";
         errorMessage.textContent = '';
         console.log(fetchedData)
-    } else {
+    } 
+    // vice versa
+    else {
+        // display info
         const fetchedData = await getData(city, unit);
         cityName.textContent = fetchedData.name;
+
+    
         temp.textContent = Math.ceil(fetchedData.main.temp) + '°C';
         feelsLike.textContent = "Feels Like: " + Math.ceil(fetchedData.main.feels_like) + '°C';
         weatherDescription.textContent = fetchedData.weather[0].description;
+
         humidity.textContent = "Humidity: " + fetchedData.main.humidity + " %";
         windSpeed.textContent = "Wind speed: " + Math.ceil(fetchedData.wind.speed) + " kph";
+
         errorMessage.textContent = '';
         console.log(fetchedData)
     }
@@ -79,15 +100,12 @@ async function switchUnit() {
     }
  
  }
- 
+
+
 loadDefault();
- searchButton.addEventListener('click', () =>{
-    farenheitUnit = true;
-    const unit = 'imperial';
-    displayInfo(unit);
- });
 
 
+// function that displays an icon based on weather description
  function chooseIcon() {
     if(weatherDescription.textContent.includes('cloud')) {
         weatherImage.src = 'icons/few-clouds.png';
@@ -106,3 +124,16 @@ loadDefault();
     }
 
  }
+
+
+ // event listeners
+
+ // search button listener
+ searchButton.addEventListener('click', () =>{
+    farenheitUnit = true;
+    const unit = 'imperial';
+    displayInfo(unit);
+ });
+
+ // switch unit when button is clicked
+unitsButton.addEventListener('click', switchUnit);
